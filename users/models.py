@@ -7,7 +7,7 @@ class User(models.Model):
     username = models.CharField(max_length=50)
     email = models.EmailField(max_length=50)
     password = models.CharField()
-    isManager = models.BooleanField(null=True, default=False)
+    is_manager = models.BooleanField(null=True, default=False)
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []

@@ -16,3 +16,21 @@ class UserSerializer(serializers.ModelSerializer):
             "password": {"write_only": True},
         }
         depth = 1
+
+    def create(self, validated_data: dict) -> User:
+        for key, value in validated_data.items():
+            if key == "is_manager":
+                if value == True:
+                    return User.objects.create_superuser(**validated_data)
+                return User.objects.create_user(**validated_data)
+
+
+    def update(self, instance: User, validated_data: dict) -> User:
+        for key, value in validated_data.items():
+            if key == 'password':
+                instance.set_password(value)
+            else:
+                setattr(instance, key, value)
+        instance.save()
+
+        return instance
