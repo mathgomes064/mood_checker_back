@@ -8,6 +8,9 @@ class ThoughtSerializer(serializers.ModelSerializer):
         fields = [
             "id",
             "thought",
-            "user",
-            "created_at",
+            "user_id",
         ]
+        read_only_fields = ["id", "user_id"]
+
+    def create(self, validated_data):
+        return Thought.objects.create(**validated_data)

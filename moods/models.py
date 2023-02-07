@@ -24,6 +24,6 @@ class Mood(models.Model):
     user = models.ForeignKey(
         "users.User", on_delete=models.CASCADE, related_name="moods"
     )
-    created_at = models.DateField(auto_now=True)
+    # created_at = models.DateField(auto_now=True)
 
     REQUIRED_FIELDS = ["mood", "rate_one", "rate_two", "rate_tree"]
