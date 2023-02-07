@@ -11,6 +11,7 @@ class UserSerializer(serializers.ModelSerializer):
             "username",
             "email",
             "password",
+            "is_manager",
             "is_superuser",
         ]
         extra_kwargs = {
@@ -46,12 +47,6 @@ class UserSerializer(serializers.ModelSerializer):
     def create(self, validated_data: dict) -> User:
         return User.objects.create_superuser(**validated_data)
 
-    # def create(self, validated_data):
-    #     for key, value in validated_data.items():
-    #         if key == "is_manager":
-    #             if value == True:
-    #                 return User.objects.create_superuser(**validated_data)
-    #             return User.objects.create_user(**validated_data)
 
     def update(self, instance: User, validated_data: dict) -> User:
         for key, value in validated_data.items():

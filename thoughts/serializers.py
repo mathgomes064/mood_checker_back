@@ -9,6 +9,7 @@ class ThoughtSerializer(serializers.ModelSerializer):
             "id",
             "thought",
             "user_id",
+            "created_at"
         ]
         read_only_fields = ["id", "user_id"]
 

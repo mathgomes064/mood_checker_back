@@ -1,14 +1,20 @@
 from django.shortcuts import render
-from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView, ListAPIView
 from .serializers import ThoughtSerializer
 from .models import Thought
 from rest_framework_simplejwt.authentication import JWTAuthentication
-from .permissions import IsAccountOwner
+from .permissions import IsAuthenticated
 
+
+class AllThoughtsView(ListAPIView):
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated]
+    serializer_class = ThoughtSerializer
+    queryset = Thought.objects.all()
 
 class ThoughtView(ListCreateAPIView):
     authentication_classes = [JWTAuthentication]
-    permission_classes = [IsAccountOwner]
+    permission_classes = [IsAuthenticated]
     serializer_class = ThoughtSerializer
     queryset = Thought.objects.all()
 
@@ -21,7 +27,7 @@ class ThoughtView(ListCreateAPIView):
 
 class ThoughtDetailView(RetrieveUpdateDestroyAPIView):
     authentication_classes = [JWTAuthentication]
-    permission_classes = [IsAccountOwner]
+    permission_classes = [IsAuthenticated]
     serializer_class = ThoughtSerializer
     queryset = Thought.objects.all()
 

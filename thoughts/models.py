@@ -9,4 +9,4 @@ class Thought(models.Model):
     user = models.ForeignKey(
         "users.User", on_delete=models.CASCADE, related_name="thoughts"
     )
-    # create_at = models.DateField(auto_now=True)
+    created_at = models.DateField(auto_now_add=True)
