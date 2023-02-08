@@ -1,0 +1,819 @@
+openapi: 3.0.3
+info:
+  title: Mood Checker API
+  version: 1.0.0
+  description: This is the Mood Checker API documentation, it has all the endpoints
+    with the Requests and Responses
+paths:
+  /api/moods/:
+    get:
+      operationId: api_moods_list
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Mood'
+          description: ''
+  /api/moods/{mood_id}/edit/:
+    get:
+      operationId: api_moods_edit_retrieve
+      parameters:
+      - in: path
+        name: mood_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mood'
+          description: ''
+    put:
+      operationId: api_moods_edit_update
+      parameters:
+      - in: path
+        name: mood_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Mood'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Mood'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Mood'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mood'
+          description: ''
+    patch:
+      operationId: api_moods_edit_partial_update
+      parameters:
+      - in: path
+        name: mood_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedMood'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedMood'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedMood'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mood'
+          description: ''
+    delete:
+      operationId: api_moods_edit_destroy
+      parameters:
+      - in: path
+        name: mood_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/moods/{user_id}/:
+    get:
+      operationId: api_moods_list_2
+      parameters:
+      - in: path
+        name: user_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Mood'
+          description: ''
+    post:
+      operationId: api_moods_create
+      parameters:
+      - in: path
+        name: user_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Mood'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Mood'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Mood'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mood'
+          description: ''
+  /api/thoughts/:
+    get:
+      operationId: api_thoughts_list
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Thought'
+          description: ''
+  /api/thoughts/{thought_id}/edit/:
+    get:
+      operationId: api_thoughts_edit_retrieve
+      parameters:
+      - in: path
+        name: thought_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Thought'
+          description: ''
+    put:
+      operationId: api_thoughts_edit_update
+      parameters:
+      - in: path
+        name: thought_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Thought'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Thought'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Thought'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Thought'
+          description: ''
+    patch:
+      operationId: api_thoughts_edit_partial_update
+      parameters:
+      - in: path
+        name: thought_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedThought'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedThought'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedThought'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Thought'
+          description: ''
+    delete:
+      operationId: api_thoughts_edit_destroy
+      parameters:
+      - in: path
+        name: thought_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/thoughts/{user_id}/:
+    get:
+      operationId: api_thoughts_list_2
+      parameters:
+      - in: path
+        name: user_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Thought'
+          description: ''
+    post:
+      operationId: api_thoughts_create
+      parameters:
+      - in: path
+        name: user_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Thought'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Thought'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Thought'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Thought'
+          description: ''
+  /api/users/:
+    get:
+      operationId: api_users_list
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+          description: ''
+    post:
+      operationId: api_users_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+  /api/users/{user_id}/:
+    get:
+      operationId: api_users_retrieve
+      parameters:
+      - in: path
+        name: user_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    put:
+      operationId: api_users_update
+      parameters:
+      - in: path
+        name: user_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    patch:
+      operationId: api_users_partial_update
+      parameters:
+      - in: path
+        name: user_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    delete:
+      operationId: api_users_destroy
+      parameters:
+      - in: path
+        name: user_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/users/{user_id}/moods/:
+    get:
+      operationId: api_users_moods_list
+      parameters:
+      - in: path
+        name: user_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Mood'
+          description: ''
+    post:
+      operationId: api_users_moods_create
+      parameters:
+      - in: path
+        name: user_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Mood'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Mood'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Mood'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mood'
+          description: ''
+  /api/users/{user_id}/thoughts/:
+    get:
+      operationId: api_users_thoughts_list
+      parameters:
+      - in: path
+        name: user_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Thought'
+          description: ''
+    post:
+      operationId: api_users_thoughts_create
+      parameters:
+      - in: path
+        name: user_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Thought'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Thought'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Thought'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Thought'
+          description: ''
+  /api/users/login/:
+    post:
+      operationId: api_users_login_create
+      description: |-
+        Takes a set of user credentials and returns an access and refresh JSON web
+        token pair to prove the authentication of those credentials.
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenObtainPair'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenObtainPair'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TokenObtainPair'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenObtainPair'
+          description: ''
+components:
+  schemas:
+    Mood:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        mood:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        rate_one:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        question_one:
+          type: string
+          maxLength: 300
+        rate_two:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        question_two:
+          type: string
+          maxLength: 300
+        rate_tree:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        question_tree:
+          type: string
+          maxLength: 300
+        user_id:
+          type: string
+          format: uuid
+          readOnly: true
+        created_at:
+          type: string
+          format: date
+          readOnly: true
+      required:
+      - created_at
+      - id
+      - question_one
+      - question_tree
+      - question_two
+      - user_id
+    PatchedMood:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        mood:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        rate_one:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        question_one:
+          type: string
+          maxLength: 300
+        rate_two:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        question_two:
+          type: string
+          maxLength: 300
+        rate_tree:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        question_tree:
+          type: string
+          maxLength: 300
+        user_id:
+          type: string
+          format: uuid
+          readOnly: true
+        created_at:
+          type: string
+          format: date
+          readOnly: true
+    PatchedThought:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        thought:
+          type: string
+          maxLength: 300
+        user_id:
+          type: string
+          format: uuid
+          readOnly: true
+        created_at:
+          type: string
+          format: date
+          readOnly: true
+    PatchedUser:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        username:
+          type: string
+          maxLength: 50
+        email:
+          type: string
+          format: email
+          maxLength: 50
+        password:
+          type: string
+          writeOnly: true
+          maxLength: 128
+        is_manager:
+          type: boolean
+          nullable: true
+    Thought:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        thought:
+          type: string
+          maxLength: 300
+        user_id:
+          type: string
+          format: uuid
+          readOnly: true
+        created_at:
+          type: string
+          format: date
+          readOnly: true
+      required:
+      - created_at
+      - id
+      - thought
+      - user_id
+    TokenObtainPair:
+      type: object
+      properties:
+        email:
+          type: string
+          writeOnly: true
+        password:
+          type: string
+          writeOnly: true
+        access:
+          type: string
+          readOnly: true
+        refresh:
+          type: string
+          readOnly: true
+      required:
+      - access
+      - email
+      - password
+      - refresh
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        username:
+          type: string
+          maxLength: 50
+        email:
+          type: string
+          format: email
+          maxLength: 50
+        password:
+          type: string
+          writeOnly: true
+          maxLength: 128
+        is_manager:
+          type: boolean
+          nullable: true
+      required:
+      - email
+      - id
+      - password
+      - username
+  securitySchemes:
+    jwtAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
