@@ -6,6 +6,7 @@ class MoodSerializer(serializers.ModelSerializer):
     class Meta:
         model = Mood
         fields = [
+            "id",
             "mood",
             "rate_one",
             "question_one",
@@ -14,6 +15,7 @@ class MoodSerializer(serializers.ModelSerializer):
             "rate_tree",
             "question_tree",
             "user_id",
+            "created_at",
         ]
         read_only_fields = ["id", "user_id"]
 
