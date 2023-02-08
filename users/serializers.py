@@ -12,7 +12,6 @@ class UserSerializer(serializers.ModelSerializer):
             "email",
             "password",
             "is_manager",
-            "is_superuser",
         ]
         extra_kwargs = {
             "id": {

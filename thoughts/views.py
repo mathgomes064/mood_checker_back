@@ -3,7 +3,6 @@ from .serializers import ThoughtSerializer
 from .models import Thought
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from .permissions import IsAuthenticated
-# from .permissions import IsObjectOwner
 from rest_framework.views import Request
 
 
