@@ -22,8 +22,6 @@ urlpatterns = [
     path("api/", include("users.urls")),
     path("api/", include("thoughts.urls")),
     path("api/", include("moods.urls")),
-        # Acessa o download do schema
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
-    # Opcionais (escolha 1)
     path('api/docs/swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
 ]
